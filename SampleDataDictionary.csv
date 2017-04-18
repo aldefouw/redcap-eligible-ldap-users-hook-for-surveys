@@ -1,0 +1,252 @@
+"Variable / Field Name","Form Name","Section Header","Field Type","Field Label","Choices, Calculations, OR Slider Labels","Field Note","Text Validation Type OR Show Slider Number","Text Validation Min","Text Validation Max",Identifier?,"Branching Logic (Show field only if...)","Required Field?","Custom Alignment","Question Number (surveys only)","Matrix Group Name","Matrix Ranking?","Field Annotation"
+record_id,request_details,,text,"Record ID",,,,,,,,,,,,,
+new_submitter_name,request_details,"Request Details",text,"Your Name",,,,,,,,y,,,,,
+new_submitter_email,request_details,,text,"Your Email",,,,,,,,y,,,,,
+if_you_can_t_find_your_pro,request_details,,descriptive,"<span style=""font-weight: normal;"">If you can't find your project in the field below, please leave the field blank and answer ""<strong>No</strong>"" to the following question.</span>",,,,,,,,,,,,,
+queried_project,request_details,,sql,"Project Name","SELECT app_title FROM redcap3.redcap_projects WHERE (status = 1 OR status = 2 OR status = 3) AND purpose = 2;","Begin typing the project name.  It will automatically complete.",autocomplete,,,,,,,,,,
+project_in_list,request_details,,yesno,"Is your project in the list above?",,,,,,,,y,,,,,
+project_name,request_details,,text,"Project Name",,,,,,,"[project_in_list] = '0'",y,,,,,
+pi_data_custodian,request_details,,yesno,"Are you the Principal Investigator / Data Custodian for this project?",,,,,,,,y,,,,,
+please_provide_us_with_inf,request_details,,descriptive,"<span style=""font-weight: normal;""><strong>User accounts authorization must be confirmed by the Principal Investigator / Data Custodian.</strong>
+
+
+
+Please provide contact information so we can verify this request.</span>",,,,,,,"[pi_data_custodian] = '0'",,,,,,
+name_of_pi,request_details,,text,"Principal Investigator (or Data Custodian) Name",,,,,,,"[pi_data_custodian] = '0'",y,,,,,
+emial_of_pi,request_details,,text,"Principal Investigator (or Data Custodian) Email",,,email,,,,"[pi_data_custodian] = '0'",y,,,,,
+instructions,request_details,"Request  to Add User Instructions",descriptive,"<span style=""font-weight: normal;"">For each user you'd like added to your REDCap project, please locate their name in the ""<strong>First and Last Name</strong>"" menu.
+
+
+
+<strong>If you do not find a user in the list, the user likely does not have a Department of Medicine account.</strong>
+
+
+
+In cases where you cannot find a user in a list, please choose ""<strong>No</strong>"" when answering the question ""<strong>Did you find the user in the list above?</strong>""</span>",,,,,,,,,,,,,
+user_1,request_details,"User 1",text,"First and Last Name",,,,,,,,,,,,,
+user_1_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,,y,,,,,
+no_account_1,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_1_in_list] = '0'",,,,,,
+manual_user_1,request_details,,text,"First and Last Name",,,,,,,"[user_1_in_list] = '0'",,,,,,
+manual_user_1_email,request_details,,text,"Email Address",,,email,,,,"[user_1_in_list] = '0'",,,,,,
+role_user_1,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,,y,,,,,
+add_new_user_1,request_details,,yesno,"Add another user?",,,,,,,,y,,,,,
+user_2,request_details,"User 2",text,"First and Last Name",,,,,,,"[add_new_user_1] = '1'",,,,,,
+user_2_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_1] = '1'",y,,,,,
+no_account_2,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_2_in_list] = '0'",,,,,,
+manual_user_2,request_details,,text,"First and Last Name",,,,,,,"[user_2_in_list] = '0'",,,,,,
+manual_user_2_email,request_details,,text,"Email Address",,,email,,,,"[user_2_in_list] = '0'",,,,,,
+role_user_2,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_1] = '1'",y,,,,,
+add_new_user_2,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_1] = '1'",y,,,,,
+user_3,request_details,"User 3",text,"First and Last Name",,,,,,,"[add_new_user_2] = '1'",,,,,,
+user_3_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_2] = '1'",y,,,,,
+no_account_3,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_3_in_list] = '0'",,,,,,
+manual_user_3,request_details,,text,"First and Last Name",,,,,,,"[user_3_in_list] = '0'",,,,,,
+manual_user_3_email,request_details,,text,"Email Address",,,email,,,,"[user_3_in_list] = '0'",,,,,,
+role_user_3,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_2] = '1'",y,,,,,
+add_new_user_3,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_2] = '1'",y,,,,,
+user_4,request_details,"User 4",text,"First and Last Name",,,,,,,"[add_new_user_3] = '1'",,,,,,
+user_4_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_3] = '1'",y,,,,,
+no_account_4,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_4_in_list] = '0'",,,,,,
+manual_user_4,request_details,,text,"First and Last Name",,,,,,,"[user_4_in_list] = '0'",,,,,,
+manual_user_4_email,request_details,,text,"Email Address",,,email,,,,"[user_4_in_list] = '0'",,,,,,
+role_user_4,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_3] = '1'",y,,,,,
+add_new_user_4,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_3] = '1'",y,,,,,
+user_5,request_details,"User 5",text,"First and Last Name",,,,,,,"[add_new_user_4] = '1'",,,,,,
+user_5_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_4] = '1'",y,,,,,
+no_account_5,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_5_in_list] = '0'",,,,,,
+manual_user_5,request_details,,text,"First and Last Name",,,,,,,"[user_5_in_list] = '0'",,,,,,
+manual_user_5_email,request_details,,text,"Email Address",,,email,,,,"[user_5_in_list] = '0'",,,,,,
+role_user_5,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_4] = '1'",y,,,,,
+add_new_user_5,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_4] = '1'",y,,,,,
+user_6,request_details,"User 6",text,"First and Last Name",,,,,,,"[add_new_user_5] = '1'",,,,,,
+user_6_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_5] = '1'",y,,,,,
+no_account_6,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_6_in_list] = '0'",,,,,,
+manual_user_6,request_details,,text,"First and Last Name",,,,,,,"[user_6_in_list] = '0'",,,,,,
+manual_user_6_email,request_details,,text,"Email Address",,,email,,,,"[user_6_in_list] = '0'",,,,,,
+role_user_6,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_5] = '1'",y,,,,,
+add_new_user_6,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_5] = '1'",y,,,,,
+user_7,request_details,"User 7",text,"First and Last Name",,,,,,,"[add_new_user_6] = '1'",,,,,,
+user_7_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_6] = '1'",y,,,,,
+no_account_7,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_7_in_list] = '0'",,,,,,
+manual_user_7,request_details,,text,"First and Last Name",,,,,,,"[user_7_in_list] = '0'",,,,,,
+manual_user_7_email,request_details,,text,"Email Address",,,email,,,,"[user_7_in_list] = '0'",,,,,,
+role_user_7,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_6] = '1'",y,,,,,
+add_new_user_7,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_6] = '1'",y,,,,,
+user_8,request_details,"User 8",text,"First and Last Name",,,,,,,"[add_new_user_7] = '1'",,,,,,
+user_8_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_7] = '1'",y,,,,,
+no_account_8,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_8_in_list] = '0'",,,,,,
+manual_user_8,request_details,,text,"First and Last Name",,,,,,,"[user_8_in_list] = '0'",,,,,,
+manual_user_8_email,request_details,,text,"Email Address",,,email,,,,"[user_8_in_list] = '0'",,,,,,
+role_user_8,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_7] = '1'",y,,,,,
+add_new_user_8,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_7] = '1'",y,,,,,
+user_9,request_details,"User 9",text,"First and Last Name",,,,,,,"[add_new_user_8] = '1'",,,,,,
+user_9_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_8] = '1'",y,,,,,
+no_account_9,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_9_in_list] = '0'",,,,,,
+manual_user_9,request_details,,text,"First and Last Name",,,,,,,"[user_9_in_list] = '0'",,,,,,
+manual_user_9_email,request_details,,text,"Email Address",,,email,,,,"[user_9_in_list] = '0'",,,,,,
+role_user_9,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_8] = '1'",y,,,,,
+add_new_user_9,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_8] = '1'",y,,,,,
+user_10,request_details,"User 10",text,"First and Last Name",,,,,,,"[add_new_user_9] = '1'",,,,,,
+user_10_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_9] = '1'",y,,,,,
+no_account_10,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_10_in_list] = '0'",,,,,,
+manual_user_10,request_details,,text,"First and Last Name",,,,,,,"[user_10_in_list] = '0'",,,,,,
+manual_user_10_email,request_details,,text,"Email Address",,,email,,,,"[user_10_in_list] = '0'",,,,,,
+role_user_10,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_9] = '1'",y,,,,,
+add_new_user_10,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_9] = '1'",y,,,,,
+user_11,request_details,"User 11",text,"First and Last Name",,,,,,,"[add_new_user_10] = '1'",,,,,,
+user_11_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_10] = '1'",y,,,,,
+no_account_11,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_11_in_list] = '0'",,,,,,
+manual_user_11,request_details,,text,"First and Last Name",,,,,,,"[user_11_in_list] = '0'",,,,,,
+manual_user_11_email,request_details,,text,"Email Address",,,email,,,,"[user_11_in_list] = '0'",,,,,,
+role_user_11,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_10] = '1'",y,,,,,
+add_new_user_11,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_10] = '1'",y,,,,,
+user_12,request_details,"User 12",text,"First and Last Name",,,,,,,"[add_new_user_11] = '1'",,,,,,
+user_12_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_11] = '1'",y,,,,,
+no_account_12,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_12_in_list] = '0'",,,,,,
+manual_user_12,request_details,,text,"First and Last Name",,,,,,,"[user_12_in_list] = '0'",,,,,,
+manual_user_12_email,request_details,,text,"Email Address",,,email,,,,"[user_12_in_list] = '0'",,,,,,
+role_user_12,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_11] = '1'",y,,,,,
+add_new_user_12,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_11] = '1'",y,,,,,
+user_13,request_details,"User 13",text,"First and Last Name",,,,,,,"[add_new_user_12] = '1'",,,,,,
+user_13_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_12] = '1'",y,,,,,
+no_account_13,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_13_in_list] = '0'",,,,,,
+manual_user_13,request_details,,text,"First and Last Name",,,,,,,"[user_13_in_list] = '0'",,,,,,
+manual_user_13_email,request_details,,text,"Email Address",,,email,,,,"[user_13_in_list] = '0'",,,,,,
+role_user_13,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_12] = '1'",y,,,,,
+add_new_user_13,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_12] = '1'",y,,,,,
+user_14,request_details,"User 14",text,"First and Last Name",,,,,,,"[add_new_user_13] = '1'",,,,,,
+user_14_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_13] = '1'",y,,,,,
+no_account_14,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_14_in_list] = '0'",,,,,,
+manual_user_14,request_details,,text,"First and Last Name",,,,,,,"[user_14_in_list] = '0'",,,,,,
+manual_user_14_email,request_details,,text,"Email Address",,,email,,,,"[user_14_in_list] = '0'",,,,,,
+role_user_14,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_13] = '1'",y,,,,,
+add_new_user_14,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_13] = '1'",y,,,,,
+user_15,request_details,"User 15",text,"First and Last Name",,,,,,,"[add_new_user_14] = '1'",,,,,,
+user_15_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_14] = '1'",y,,,,,
+no_account_15,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_15_in_list] = '0'",,,,,,
+manual_user_15,request_details,,text,"First and Last Name",,,,,,,"[user_15_in_list] = '0'",,,,,,
+manual_user_15_email,request_details,,text,"Email Address",,,email,,,,"[user_15_in_list] = '0'",,,,,,
+role_user_15,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_14] = '1'",y,,,,,
+add_new_user_15,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_14] = '1'",y,,,,,
+user_16,request_details,"User 16",text,"First and Last Name",,,,,,,"[add_new_user_15] = '1'",,,,,,
+user_16_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_15] = '1'",y,,,,,
+no_account_16,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_16_in_list] = '0'",,,,,,
+manual_user_16,request_details,,text,"First and Last Name",,,,,,,"[user_16_in_list] = '0'",,,,,,
+manual_user_16_email,request_details,,text,"Email Address",,,email,,,,"[user_16_in_list] = '0'",,,,,,
+role_user_16,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_15] = '1'",y,,,,,
+add_new_user_16,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_15] = '1'",y,,,,,
+user_17,request_details,"User 17",text,"First and Last Name",,,,,,,"[add_new_user_16] = '1'",,,,,,
+user_17_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_16] = '1'",y,,,,,
+no_account_17,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_17_in_list] = '0'",,,,,,
+manual_user_17,request_details,,text,"First and Last Name",,,,,,,"[user_17_in_list] = '0'",,,,,,
+manual_user_17_email,request_details,,text,"Email Address",,,email,,,,"[user_17_in_list] = '0'",,,,,,
+role_user_17,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_16] = '1'",y,,,,,
+add_new_user_17,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_16] = '1'",y,,,,,
+user_18,request_details,"User 18",text,"First and Last Name",,,,,,,"[add_new_user_17] = '1'",,,,,,
+user_18_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_17] = '1'",y,,,,,
+no_account_18,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_18_in_list] = '0'",,,,,,
+manual_user_18,request_details,,text,"First and Last Name",,,,,,,"[user_18_in_list] = '0'",,,,,,
+manual_user_18_email,request_details,,text,"Email Address",,,email,,,,"[user_18_in_list] = '0'",,,,,,
+role_user_18,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_17] = '1'",y,,,,,
+add_new_user_18,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_17] = '1'",y,,,,,
+user_19,request_details,"User 19",text,"First and Last Name",,,,,,,"[add_new_user_18] = '1'",,,,,,
+user_19_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_18] = '1'",y,,,,,
+no_account_19,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_19_in_list] = '0'",,,,,,
+manual_user_19,request_details,,text,"First and Last Name",,,,,,,"[user_19_in_list] = '0'",,,,,,
+manual_user_19_email,request_details,,text,"Email Address",,,email,,,,"[user_19_in_list] = '0'",,,,,,
+role_user_19,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_18] = '1'",y,,,,,
+add_new_user_19,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_18] = '1'",y,,,,,
+user_20,request_details,"User 20",text,"First and Last Name",,,,,,,"[add_new_user_19] = '1'",,,,,,
+user_20_in_list,request_details,,yesno,"Did you find the user in the list above?",,,,,,,"[add_new_user_19] = '1'",y,,,,,
+no_account_20,request_details,,descriptive,"<span style=""font-weight: normal;"">If you didn't find the user in the list above, this user will need a Department of Medicine account configured.
+
+
+
+<strong>Please give us the following details AND complete an <a href=""http://www.medicine.wisc.edu/sites/default/files/affiliated_computer_systems_authorization_request.pdf"" target=""_blank"">Affiliated Access Form</a>.</strong></span>",,,,,,,"[user_20_in_list] = '0'",,,,,,
+manual_user_20,request_details,,text,"First and Last Name",,,,,,,"[user_20_in_list] = '0'",,,,,,
+manual_user_20_email,request_details,,text,"Email Address",,,email,,,,"[user_20_in_list] = '0'",,,,,,
+role_user_20,request_details,,dropdown,Role,"1, Administrator | 2, Data Entry | 3, Read Only | 4, Other",,,,,,"[add_new_user_19] = '1'",y,,,,,
+add_new_user_20,request_details,,yesno,"Add another user?",,,,,,,"[add_new_user_19] = '1'",,,,,,
+more_than_20,request_details,"Request Additional Users",descriptive,"<span style=""font-weight:normal;"">If you need additional users, please contact the REDCap Administator by sending an email to <a href=""mailto:redcaphelp@dom.wisc.edu"">redcaphelp@dom.wisc.edu</a>.
+
+
+
+<strong>Feel free to submit the users you have entered information for up to this point.</strong>
+
+</span>",,,,,,,"[add_new_user_20] = '1'",,,,,,
